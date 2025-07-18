@@ -6,12 +6,12 @@ This project analyzes pharmaceutical drug spending across OECD countries, highli
 📑 Table of Contents
 
 Team Members
-Project Overview
-Introduction
-Problem Statement
-Business Goal
-Data Science Approach
-Conclusion
+\n Project Overview
+\n Introduction
+\n Problem Statement
+\n Business Goal
+\n Data Science Approach
+\n Conclusion
 ## Team Members
 
 📈 Biswapriya Manna    - [@Bishudsi](https://github.com/Bishudsi)
