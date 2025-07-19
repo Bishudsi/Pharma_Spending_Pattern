@@ -15,7 +15,7 @@ This project analyzes pharmaceutical drug spending across OECD countries, highli
 
 📚Introduction and 🚨Problem Statement: A high-cost business is the nature of the pharmaceutical sector. The pharmaceutical industry is characterized by ever-increasing costs due to its industrial nature: i.e., High research and development costs, a need for high profits, monopoly tendencies, and an impact on patients. These sector-specific high-cost characteristics require continuous exploration of new drug markets. The need for effective and efficient strategies to identify a new drug market is a significant challenge for many pharmaceutical companies.
 
-🏆Business Goal: This project intends to identify new markets for pharmaceutical companies by analyzing pharmaceutical drug spending at the country level. Through evidence-informed approaches, this project aims to identify potential new markets, using high pharmaceutical drug spending as a key indicator for decision-making. The intended objectives of this project are to identify potential new market countries in the form of:
+🏆Business Goal: This project intends to identify new markets for pharmaceutical companies by the data analysis and visualization. Through evidence-informed approaches, this project aims to identify potential new markets, using high pharmaceutical drug spending as a key indicator for decision-making. The intended objectives of this project are to identify potential new market countries in the form of:
 
 - the top five (5) countries with the highest pharmaceutical drug spending 
 - a group of countries with similar characteristics
