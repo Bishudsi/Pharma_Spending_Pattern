@@ -18,7 +18,7 @@ This project intends to identify potential new markets for pharmaceutical compan
 This project provides the following deliverables:
 
 - A comprehensive final report (presented within this README).
-- A semi-dynamic web visualization (HTML or other forms) for interactive data exploration.[Click here to view our project site](https://melram17.github.io/Data-Science-Project/)
+- A semi-dynamic web visualization (HTML or other forms) for interactive data exploration.[Click here to view our project site](https://bishudsi.github.io/Pharma_Spending_Pattern/)
 
 📚Introduction and 🚨Problem Statement: 
 The pharmaceutical industry is characterized by ever-increasing costs due to its industrial nature: i.e., High research and development costs, a need for high profits, monopoly tendencies, and an impact on patients. These sector-specific high-cost characteristics require continuous exploration of new drug markets. The need for effective and efficient strategies to identify a new drug market is a significant challenge for many pharmaceutical companies.
