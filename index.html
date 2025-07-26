@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OECD Pharmaceutical Drug Spending Analysis</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts from Google Fonts (Quicksand for everything) -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for warm & friendly feel with Quicksand font */
+        body {
+            font-family: 'Quicksand', sans-serif; /* All text uses Quicksand font */
+            scroll-behavior: smooth;
+            background-color: #fefdfb; /* Very light, warm off-white background */
+            color: #4a4a4a; /* Soft dark gray text */
+            line-height: 1.7; /* Improved readability */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Quicksand', sans-serif; /* Headings also use Quicksand */
+            font-weight: 700; /* Bolder headings */
+            color: #333333; /* Slightly darker for headings */
+        }
+
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background-color: #f0f0f0; /* Light gray for scrollbar track */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #c0c0c0; /* Muted gray for scrollbar thumb */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #a0a0a0; /* Darker gray on hover */
+        }
+
+        /* General section styling for clean, soft feel */
+        section {
+            padding: 3.5rem 2.5rem; /* Consistent padding */
+            margin-bottom: 3.5rem; /* Consistent space between sections */
+            background-color: #ffffff; /* Pure white content blocks */
+            border: 1px solid #f2f2f2; /* Very subtle light border */
+            border-radius: 1rem; /* More rounded corners for a softer look */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04); /* Soft, subtle shadow */
+        }
+
+        h1 {
+            font-size: 3.8rem; /* Larger h1 size for prominence */
+            font-weight: 800; /* Extra bold for main title */
+            line-height: 1.2;
+            color: #2a2a2a;
+        }
+
+        h2 {
+            font-size: 2.3rem; /* Adjusted h2 size */
+            font-weight: 700; /* Bold for subheadings */
+            border-bottom: 2px solid #e0e0e0; /* Soft, light border */
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .header-container {
+            background-color: #ffffff; /* White background for header area */
+            padding: 2.5rem 0; /* Vertical padding */
+            border-bottom: 1px solid #f2f2f2; /* Subtle separator */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03); /* Very light shadow */
+            border-radius: 1rem; /* Rounded corners for the container */
+            margin-bottom: 4.5rem; /* More space below header */
+        }
+
+        .button-primary {
+            background-color: #88b04b; /* Soft green */
+            color: white;
+            font-weight: 600; /* Semi-bold weight */
+            border-radius: 0.75rem; /* More rounded */
+            padding: 0.9rem 1.8rem; /* More padding */
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for buttons */
+        }
+
+        .button-secondary {
+            background-color: #f5f5f5; /* Very light gray */
+            border: 1px solid #e0e0e0; /* Soft light border */
+            color: #6a6a6a; /* Muted dark text */
+            font-weight: 600;
+            border-radius: 0.75rem;
+            padding: 0.9rem 1.8rem;
+            transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Soft shadow for buttons */
+        }
+
+        .button-primary:hover {
+            background-color: #7aa040; /* Darker green on hover */
+            transform: translateY(-2px);
+        }
+
+        .button-secondary:hover {
+            background-color: #e8e8e8; /* Slightly darker light gray on hover */
+            border-color: #c0c0c0; /* Slightly darker border on hover */
+            color: #4a4a4a;
+            transform: translateY(-2px);
+        }
+
+        .placeholder-visual {
+            border: 2px dashed #d0d0d0; /* Soft dashed border for placeholders */
+            background-color: #f9f9f9; /* Very light background for placeholders */
+            color: #999999; /* Muted gray text color */
+            font-size: 1.1rem; /* Slightly larger font for placeholder text */
+            font-weight: 500;
+            border-radius: 0.75rem; /* More rounded */
+            height: 12rem; /* Consistent height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        /* Adjust hover effect for sections to be very subtle */
+        .section-content:hover {
+            background-color: #ffffff; /* Keep white */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06); /* Slightly more pronounced shadow on hover */
+        }
+
+        /* Adjust list item spacing */
+        ul.list-disc li {
+            margin-bottom: 0.5rem;
+        }
+        ul.list-disc li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Link colors for light, whimsical theme */
+        a {
+            color: #6a93d6; /* Soft blue for links */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+        a:hover {
+            color: #5a80c0; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Image styling for sections */
+        .section-image {
+            width: 100%;
+            max-width: 450px; /* Limit max width for images in sections */
+            height: auto;
+            border-radius: 1rem; /* Rounded corners for images */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            display: block; /* Ensure it takes up its own line */
+            margin: 1.5rem auto 2.5rem auto; /* Center and add vertical margin */
+        }
+
+        /* Specific styling for the image-text combined section */
+        .image-text-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem; /* Space between image and text */
+            align-items: center;
+            padding: 3.5rem 2.5rem;
+            margin-bottom: 3.5rem;
+            background-color: #ffffff;
+            border: 1px solid #f2f2f2;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        @media (min-width: 768px) { /* On medium screens and up */
+            .image-text-section {
+                flex-direction: row; /* Arrange in a row */
+                align-items: flex-start; /* Align items to the top */
+            }
+            .image-text-section .image-wrapper,
+            .image-text-section .text-content {
+                flex: 1; /* Each takes equal width */
+            }
+            .image-text-section .image-wrapper {
+                padding-right: 2rem; /* Space between image and text */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Header Section -->
+        <header class="w-full max-w-4xl mx-auto text-center header-container">
+            <h1 class="font-extrabold leading-tight mb-4">
+                OECD Pharmaceutical Spending Analysis
+            </h1>
+            <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                Uncovering Promising Markets for Pharmaceutical Companies
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#strategic-market-expansion" class="button-primary">
+                    Explore Project
+                </a>
+                <a href="#team-members" class="button-secondary">
+                    Meet the Team
+                </a>
+            </div>
+        </header>
+
+        <!-- Team Members Section -->
+        <section id="team-members" class="w-full max-w-4xl mx-auto mb-16">
+            <h2 class="font-bold mb-6">Team Members</h2>
+            <ul class="text-lg text-gray-700 leading-relaxed grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <li><span class="font-semibold">📈 Biswapriya Manna</span> - <a href="https://github.com/Bishudsi" target="_blank" class="text-blue-600 hover:underline">@Bishudsi</a></li>
+                <li><span class="font-semibold">📈 Hiroyoshi Hiratsuka</span> - <a href="https://github.com/pim61sit" target="_blank" class="text-blue-600 hover:underline">@pim61sit</a></li>
+                <li><span class="font-semibold">📈 Melanie Ramnauth</span> - <a href="https://github.com/melram17" target="_blank" class="text-blue-600 hover:underline">@melram17</a></li>
+                <li><span class="font-semibold">📈 Oleksandr Lebediuk</span> - <a href="https://github.com/olebediuk" target="_blank" class="text-blue-600 hover:underline">@olebediuk</a></li>
+                <li><span class="font-semibold">📈 Vidhi Patel</span> - <a href="https://github.com/Patelvidhim" target="_blank" class="text-blue-600 hover:underline">@Patelvidhim</a></li>
+                <li><span class="font-semibold">📈 Zeinab Sadrosadat</span> - <a href="https://github.com/zsadr2002" target="_blank" class="text-blue-600 hover:underline">@zsadr2002</a></li>
+            </ul>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Explore our collaborative work on GitHub: <a href="https://github.com/Bishudsi/Pharma_Spending_Pattern" target="_blank" class="text-blue-600 hover:underline font-semibold">Pharma Spending Pattern Repository</a>
+            </p>
+        </section>
+
+        <!-- Strategic Pharmaceutical Market Expansion Section (Combined Content) -->
+        <section id="strategic-market-expansion" class="w-full max-w-4xl mx-auto mb-16">
+            <h2 class="font-bold mb-6">Strategic Pharmaceutical Market Expansion 🎯</h2>
+
+            <h3 class="font-bold text-2xl mb-4 text-gray-800">Objective & Impact</h3>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                This project helps pharmaceutical companies pinpoint and enter high-potential drug markets. We address the industry's inherently high-cost nature – driven by significant R&D expenses, the need for high profits, and monopoly tendencies – by analyzing OECD pharmaceutical spending to provide effective strategies for continuous market expansion.
+                The target audience of this project is executives and sales teams from major pharmaceutical companies and startups. The DS approaches for this project will uncover high potential countries, clustering characteristics that point to market opportunities. The data from the OECD will be examined to achieve the business goal and project objectives.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                Health spending and per capita GDP reflects a nation's commitment to well-being and economic productivity. Our analysis reveals where pharmaceutical investments yield the greatest impact, helping companies align growth with global health trends and prioritization.
+            </p>
+
+            <h3 class="font-bold text-2xl mb-4 text-gray-800">Key Objectives</h3>
+            <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-4 ml-4">
+                <li>Identify the high-potential countries for pharmaceutical expansion.</li>
+                <li>Cluster countries with similar market traits for targeted strategies.</li>
+                <li>Pinpoint drivers of high drug spending at the country level.</li>
+                </ul>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                All insights leverage reliable OECD data from <a href="https://datahub.io/core/pharmaceutical-drug-spending#readme" target="_blank" class="text-blue-600 hover:underline font-semibold">DataHub.io</a>, ensuring strategic value for your teams.
+            </p>
+
+            <div class="mt-8 text-center">
+                <svg class="animate-bounce mx-auto w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+                <p class="text-sm text-gray-500 mt-2">Scroll down for market overview and findings</p>
+            </div>
+        </section>
+
+        <!-- Current State Section -->
+        <section id="current-state" class="w-full max-w-4xl mx-auto mb-16">
+            <h2 class="font-bold mb-6">Current State: Top Health Spending Countries 📊</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                Understanding the current landscape of health expenditure is crucial for identifying potential growth markets. This view highlights countries with the highest pharmaceutical drug spending, providing a snapshot of the global investment in health and pharmaceutical products.
+                Our analysis began with an initial time series examination of pharmaceutical spending to identify existing top investment areas. This foundational view was crucial in predicting key factors and countries that would constitute high-potential markets. 
+                This view was completed with matplotlib and helps users to quickly digest global health trends.
+            </p>
+            <div class="w-full flex justify-center">
+                <img src="https://i.imgur.com/fbE0fNq.png" alt="Top 5 Pharmaceutical Spending Countries" class="section-image max-w-full h-auto">
+            </div>
+        </section>
+
+        <!-- Analyze Markets by Clustering Section -->
+        <section id="analyze-markets-by-clustering" class="w-full max-w-4xl mx-auto mb-16">
+            <h2 class="font-bold mb-6">Analyze Markets by Clustering 🧩</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                We've analyzed health investment across 37 countries, focusing on two key measures: 
+                Total Health Spending (USD) and USD Per Capita Growth. 
+                This allowed us to group them into three distinct market types.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                Most countries (24) fall into "Saturated Markets." These show high Total Health Spending but low USD Per Capita Growth, indicating mature economies with established health investments.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                In contrast, 13 countries are "High-Potential Markets." They currently have lower Total Health Spending but significant USD Per Capita Growth, suggesting exciting opportunities for new investments.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                Finally, we identified just one "Stable Market," demonstrating a balanced and steady approach in both Total Health Spending and USD Per Capita Growth.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                In summary, while many countries are already heavily invested, there are also numerous emerging markets where strategic investments could lead to substantial growth in health spending.
+            </p>
+            <div class="w-full flex justify-center">
+                <img src="https://i.imgur.com/keBWcMU.png" alt="Clustering Analysis Visual" class="section-image max-w-full h-auto">
+            </div>
+        </section>
+
+        <!-- New Market Entrance Recommendations Section -->
+        <section id="market-entrance-recommendations" class="w-full max-w-4xl mx-auto mb-16">
+            <h2 class="font-bold mb-6">Market Entrance Recommendations 🚀</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                Visualizing these clusters on a world map reveals a significant concentration of high-potential markets across Europe.
+                It suggests that while Europe may already host some 'Saturated Markets,' there are numerous countries within the continent that present considerable untapped growth. 
+                This regional concentration could also offer logistical and regulatory advantages for European expansion.
+                Top countries include Austria, Bulgaria, Switzerland and Cypress.
+            </p>
+            <div class="w-full flex justify-center">
+                <img src="https://i.imgur.com/XlVPX2M.png" alt="Geographic Graph of Market Recommendations" class="section-image max-w-full h-auto">
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section id="conclusion" class="w-full max-w-4xl mx-auto mb-16">
+            <h2 class="font-bold mb-6">Conclusion 📝</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                In summary, this case study provides actionable intelligence for pharmaceutical companies to pinpoint optimal market entry points. By understanding these diverse market landscapes, businesses can effectively align their expansion strategies with global health trends and prioritize investments where they are most likely to yield substantial growth.
+                Below, is a complete table of high potential markets identified through this analysis.
+            </p>
+            <div class="w-full flex justify-center">
+                <img src="https://i.imgur.com/BzulXEm.png" alt="Future Outlook Visual" class="section-image max-w-full h-auto">
+            </div>
+        </section>
+
+        <!-- Data Science Approach Section -->
+        <section id="data-science-approach" class="w-full max-w-4xl mx-auto mb-16">
+            <h2 class="font-bold mb-6">Methodologies 🤖</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                Our approach to analyzing global pharmaceutical spending involves three core phases:
+            </p>
+            <ul class="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-4 ml-4">
+                <li><span class="font-semibold">1. Data Preparation:</span> We acquire OECD data from <a href="https://datahub.io/core/pharmaceutical-drug-spending#readme" target="_blank" class="text-blue-600 hover:underline font-semibold">DataHub.io</a>, integrating population figures, cleaning, and transforming features (e.g., growth, per capita spending). This is done in <span class="font-semibold">Python</span> using <span class="font-semibold">pandas</span> and <span class="font-semibold">NumPy</span> within <span class="font-semibold">Jupyter Notebooks</span>, with <span class="font-semibold">GitHub</span> for management.</li>
+                <li><span class="font-semibold">2. Clustering Analysis:</span> To segment markets, we apply <span class="font-semibold">KMeans clustering</span> (k=3). Data is aggregated by country (spending, growth), features are standardized with <span class="font-semibold">StandardScaler</span> (scikit-learn), and the <span class="font-semibold">KMeans</span> algorithm iteratively groups countries based on similarity.</li>
+                <li><span class="font-semibold">3. Data Analysis & Visualization:</span> Insights are generated and presented using <span class="font-semibold">Python</span> libraries: <span class="font-semibold">NumPy</span> for computation, <span class="font-semibold">pandas</span> for data manipulation, <span class="font-semibold">seaborn</span> and <span class="font-semibold">matplotlib.pyplot</span> for static visuals, and <span class="font-semibold">plotly.express</span> for interactive plots like choropleths.</li>
+            </ul>
+        </section>
+
+        <!-- Limitations Section -->
+        <section id="limitations" class="w-full max-w-4xl mx-auto mb-16">
+            <h2 class="font-bold mb-6">Limitations ⚠️</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                This analysis has certain limitations, primarily due to data timeliness and historical gaps, with data only available up to 2022 and some missing entries. Consequently, our insights are based on pre-COVID economic and health spending trends. Furthermore, the scope is limited to OECD member nations, as not all countries are included in this dataset. For future work, we recommend updated data collection to capture post-COVID trends and an expanded analytical scope to include classification and regression models for deeper predictive insights.
+            </p>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="w-full max-w-4xl mx-auto text-center mt-16 py-8 border-t-2 border-gray-300">
+            <p class="text-gray-600 text-sm mb-2">
+                Project by Biswapriya Manna, Hiroyoshi Hiratsuka, Melanie Ramnauth, Oleksandr Lebediuk, Vidhi Patel, Zeinab Sadrosadat.
+            </p>
+            <p class="text-gray-500 text-xs">
+                Disclaimer: This is a conceptual visualization for demonstration purposes.
+            </p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Privacy Policy</a>
+                <span class="text-gray-400">|</span>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Terms of Service</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll for "Explore Project" button
+        document.querySelector('a[href="#strategic-market-expansion"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for "Meet the Team" button
+        document.querySelector('a[href="#team-members"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
+
