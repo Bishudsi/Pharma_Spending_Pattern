@@ -9,7 +9,7 @@ This project analyzes pharmaceutical drug spending across OECD countries, highli
 <br>📈 Melanie Ramnauth    - [@melram17](https://github.com/melram17) - [Link to Melanie's final video](https://www.loom.com/share/f0ff2eb9f2cd41eca72b48118695c63e?sid=b26916d7-1265-49dc-b57f-fe318f5f428a)
 <br>📈 Oleksandr Lebediuk  - [@olebediuk](https://github.com/olebediuk) - [Link to Oleksandr's reflection video](https://drive.google.com/file/d/1Sp_hGYDLXYV7HfIkuc8TCM8nzyFetIpN/view?usp=drive_link)
 <br>📈 Vidhi Patel         - [@Patelvidhim](https://github.com/Patelvidhim)
-<br>📈 Zeinab Sadrosadat   - [@zsadr2002](https://github.com/zsadr2002) 📈 Zeinab Sadrosadat - [@zsadr2002](https://github.com/zsadr2002) - [Link to Zeinab's reflection video](https://drive.google.com/file/d/1NuHvjoiva1Nx2K37xUniWbG4eKWFdazG/view?usp=share_link)
+<br>📈 Zeinab Sadrosadat   - [@zsadr2002](https://github.com/zsadr2002) - [@zsadr2002](https://github.com/zsadr2002) - [Link to Zeinab's reflection video](https://drive.google.com/file/d/1NuHvjoiva1Nx2K37xUniWbG4eKWFdazG/view?usp=share_link)
 
 
 📝Project Overview: 
